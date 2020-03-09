@@ -33,16 +33,16 @@ def gradient_descent(X,y,thetas,epochs=10000,alpha=0.001):
     return thetas, iteration, losses
 
 def read_file(filename='./ex1data2.txt'):
-    matrix=[]
+    X=[]
     y=[]
     with open(filename,'r') as file:
         for row in file:
             nrow=[]
             for r in row.split(','):
                 nrow.append(float(r.strip()))
-            matrix.append(nrow[:-1])
+            X.append(nrow[:-1])
             y.append([nrow[-1]])
-    return matrix,y
+    return X,y
 
 def standardize_data(X):
     std_data=X
