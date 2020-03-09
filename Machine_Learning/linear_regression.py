@@ -46,25 +46,25 @@ def read_file(filename='./ex1data2.txt'):
 
 def standardize_data(X):
     std_data=X
-    mean=np.mean(X,axis=0,dtype=np.longlong)
-    sub=np.subtract(X,mean,dtype=np.longlong)
-    sq=np.square(sub,dtype=np.longlong)
-    summation=np.sum(sq,axis=0,dtype=np.longlong)
+    mean=np.mean(X,axis=0,dtype=np.longdouble)
+    sub=np.subtract(X,mean,dtype=np.longdouble)
+    sq=np.square(sub,dtype=np.longdouble)
+    summation=np.sum(sq,axis=0,dtype=np.longdouble)
     summation=np.divide(summation,(X.shape[0]-1))
     std_deviation=np.sqrt(summation)
     std_data=np.divide(np.subtract(std_data,mean),std_deviation)
     return std_data
 
 def main():
-    X=np.matrix(read_file()[0],dtype=np.longlong)
+    X=np.matrix(read_file()[0],dtype=np.longdouble)
     X=standardize_data(X)
     one=np.matrix(np.ones(X.shape[0])).T
     X=np.append(one,X,axis=1)
-    y=np.matrix(read_file()[1],dtype=np.longlong)
+    y=np.matrix(read_file()[1],dtype=np.longdouble)
     thetas=np.matrix(np.zeros(X.shape[1]),dtype=np.longdouble).T
 #     thetas=np.matrix([[0],[0],[0]],dtype=np.longlong)
     new_thetas,iteration,losses=gradient_descent(X,y,thetas)
-    i=np.matrix([[1,2400,3]],dtype=np.longlong)
+    i=np.matrix([[1,2400,3]],dtype=np.longdouble)
     print(hypothesis(new_thetas,i))
     plt.plot(iteration,losses)
     plt.show()
