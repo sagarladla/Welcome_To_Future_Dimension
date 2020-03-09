@@ -61,7 +61,8 @@ def main():
     one=np.matrix(np.ones(X.shape[0])).T
     X=np.append(one,X,axis=1)
     y=np.matrix(read_file()[1],dtype=np.longlong)
-    thetas=np.matrix([[0],[0],[0]],dtype=np.longlong)
+    thetas=np.matrix(np.zeros(X.shape[1]),dtype=np.longdouble).T
+#     thetas=np.matrix([[0],[0],[0]],dtype=np.longlong)
     new_thetas,iteration,losses=gradient_descent(X,y,thetas)
     i=np.matrix([[1,2400,3]],dtype=np.longlong)
     print(hypothesis(new_thetas,i))
